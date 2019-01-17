@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import time
 from pyquery import PyQuery as pq
@@ -33,8 +34,8 @@ def get_sale_games(page):
                 csv_writer.writerow([
                     product['title'], product['review'], product['homepage'], product['discount'], product['original_price'], product['publish_date'], product['image']])
                 print(product)  # 将结果打印
+    csv_file.close()
 
 
 if __name__ == '__main__':
     get_sale_games(5)  # 页数可以自定义
-    csv_file.close()
