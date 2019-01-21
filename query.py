@@ -3,10 +3,11 @@ import os
 import csv
 import json
 import sqlite3
+from tools import steam_pic_to_smms
 
 QUERY_BY_PROP = '''
 select name, discount, oriprice, curprice, pos, pop, date, url, img
-from games order by {prop} {order} limit 3
+from games order by {prop} {order} limit 2
 '''
 
 # {
@@ -41,7 +42,7 @@ def do_query(filterstr):
                 desc += "{0},降价{1},折后{2}元\r\n".format(
                     game[0], game[1], game[3])
             article = {'title': title, 'description': desc,
-                       'url': result[0][7], 'picurl': result[0][8]}
+                       'url': result[0][7], 'picurl': steam_pic_to_smms(result[0][8])}
             articles.append(article)
     if filterstr == 'pop':
         # 最高人气
@@ -55,7 +56,7 @@ def do_query(filterstr):
                 desc += "{0},热度{1},折后{2}元\r\n".format(
                     game[0], game[5], game[3])
             article = {'title': title, 'description': desc,
-                       'url': result[0][7], 'picurl': result[0][8]}
+                       'url': result[0][7], 'picurl': steam_pic_to_smms(result[0][8])}
             articles.append(article)
     if filterstr == 'pos':
         # 最高评价
@@ -69,7 +70,7 @@ def do_query(filterstr):
                 desc += "{0},好评率{1}%,折后{2}元\r\n".format(
                     game[0], game[4], game[3])
             article = {'title': title, 'description': desc,
-                       'url': result[0][7], 'picurl': result[0][8]}
+                       'url': result[0][7], 'picurl': steam_pic_to_smms(result[0][8])}
             articles.append(article)
 
     cursor.close()
