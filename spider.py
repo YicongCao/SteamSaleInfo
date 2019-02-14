@@ -12,7 +12,7 @@ def get_sale_games(page):
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(["title", "review", "homepage", "discount",
                          "original_price", "publish_date", "image"])
-    url = 'http://store.steampowered.com/search/?specials=1&page='
+    url = 'https://store.steampowered.com/search/?specials=1&page='
     for i in range(page):
         newurl = url+str(i)
         print(newurl)
