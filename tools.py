@@ -39,10 +39,11 @@ def thumb_to_header(imgurl):
 def steam_pic_to_smms(imgurl):
     # 把steam的标题图上传到图床（提升客户端加载速度）
     steamimgurl = thumb_to_header(imgurl)
-    localimgpath = download(steamimgurl)
-    smmsimgurl = upload(localimgpath)
-    os.remove(localimgpath)
-    return smmsimgurl
+    # localimgpath = download(steamimgurl)
+    # smmsimgurl = upload(localimgpath)
+    # os.remove(localimgpath)
+    # return smmsimgurl
+    return steamimgurl
 
 
 if __name__ == '__main__':
